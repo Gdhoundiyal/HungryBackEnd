@@ -7,14 +7,18 @@ function App() {
 
   useEffect(() => {
     axios.get("/api/jokes").then(response => {
-      console.log(response);
+      console.log(response.data);
       setCount(response.data);
     })
     .catch(error => {
       console.error('There was an error!', error);
     });
   }, []);
-  return (<div><h1> hELLOOOO+===</h1></div>)
+  return (<div>
+    {count.map((item)=>{
+      <div key={item.id}>{item.name}</div>
+    })}
+  </div>)
 }
 
 export default App;
